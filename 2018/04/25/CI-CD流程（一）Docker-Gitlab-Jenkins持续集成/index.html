@@ -88,7 +88,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -117,20 +117,32 @@
 
 
 
-<meta name="description" content="记录下使用Docker+Gitlab+Jenkins的安装过程，以及所踩得坑。当然这个还是简单的一个持续集成，后续可能会使用docker服务编排的框架进行项目docker化，通过使用harbox，kubernetes可以构建一个完成的CI，CD流程 一个简单的持续集成的方案 下面将按照上述的图来一步步搭建环境 一、安装1.docker安装我使用的是mac版本，下载docker-for-mac,鉴于">
+<meta name="description" content="使用mac系统基于Docker+Gitlab+Jenkins搭建持续集成">
 <meta name="keywords" content="CI,CD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CI,CD流程（一）Docker+Gitlab+Jenkins持续集成">
-<meta property="og:url" content="http://localhost/2018/04/25/CI-CD流程（一）Docker-Gitlab-Jenkins持续集成/index.html">
+<meta property="og:url" content="http://www.happyCoded.com/2018/04/25/CI-CD流程（一）Docker-Gitlab-Jenkins持续集成/index.html">
 <meta property="og:site_name" content="HappyCoded">
-<meta property="og:description" content="记录下使用Docker+Gitlab+Jenkins的安装过程，以及所踩得坑。当然这个还是简单的一个持续集成，后续可能会使用docker服务编排的框架进行项目docker化，通过使用harbox，kubernetes可以构建一个完成的CI，CD流程 一个简单的持续集成的方案 下面将按照上述的图来一步步搭建环境 一、安装1.docker安装我使用的是mac版本，下载docker-for-mac,鉴于">
+<meta property="og:description" content="使用mac系统基于Docker+Gitlab+Jenkins搭建持续集成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://on-img.com/chart_image/5ae011e7e4b04721d63b6f87.png">
-<meta property="og:updated_time" content="2018-04-26T10:33:19.768Z">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%901.png">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/92161476.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/87743650.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/79173714.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/5419922.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/2170254.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/8557629.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/38432322.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/73494545.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/51018191.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/45726665.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/49886122.jpg">
+<meta property="og:image" content="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/23877683.jpg">
+<meta property="og:updated_time" content="2018-04-27T08:45:57.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CI,CD流程（一）Docker+Gitlab+Jenkins持续集成">
-<meta name="twitter:description" content="记录下使用Docker+Gitlab+Jenkins的安装过程，以及所踩得坑。当然这个还是简单的一个持续集成，后续可能会使用docker服务编排的框架进行项目docker化，通过使用harbox，kubernetes可以构建一个完成的CI，CD流程 一个简单的持续集成的方案 下面将按照上述的图来一步步搭建环境 一、安装1.docker安装我使用的是mac版本，下载docker-for-mac,鉴于">
-<meta name="twitter:image" content="http://on-img.com/chart_image/5ae011e7e4b04721d63b6f87.png">
+<meta name="twitter:description" content="使用mac系统基于Docker+Gitlab+Jenkins搭建持续集成">
+<meta name="twitter:image" content="http://p7sfj9uwv.bkt.clouddn.com/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%901.png">
 
 
 
@@ -159,7 +171,7 @@
 
 
 
-  <link rel="canonical" href="http://localhost/2018/04/25/CI-CD流程（一）Docker-Gitlab-Jenkins持续集成/"/>
+  <link rel="canonical" href="http://www.happyCoded.com/2018/04/25/CI-CD流程（一）Docker-Gitlab-Jenkins持续集成/"/>
 
 
 
@@ -285,6 +297,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -352,7 +374,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://localhost/2018/04/25/CI-CD流程（一）Docker-Gitlab-Jenkins持续集成/">
+    <link itemprop="mainEntityOfPage" href="http://www.happyCoded.com/2018/04/25/CI-CD流程（一）Docker-Gitlab-Jenkins持续集成/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HymanYu">
@@ -435,7 +457,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                   648 字
+                   1,945 字
                 </span>
               
 
@@ -451,12 +473,16 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                    3 分钟
+                    8 分钟
                 </span>
               
             </div>
           
 
+          
+              <div class="post-description">
+                  使用mac系统基于Docker+Gitlab+Jenkins搭建持续集成
+              </div>
           
 
         </div>
@@ -472,8 +498,10 @@
       
 
       
-        <p>记录下使用Docker+Gitlab+Jenkins的安装过程，以及所踩得坑。当然这个还是简单的一个持续集成，后续可能会使用docker服务编排的框架进行项目docker化，通过使用harbox，kubernetes可以构建一个完成的CI，CD流程</p>
-<h2 id="一个简单的持续集成的方案"><a href="#一个简单的持续集成的方案" class="headerlink" title="一个简单的持续集成的方案"></a>一个简单的持续集成的方案</h2><p><img src="http://on-img.com/chart_image/5ae011e7e4b04721d63b6f87.png" alt="持续集成方案"></p>
+        <h1 id="CI-CD流程（一）Docker-Gitlab-Jenkins持续集成"><a href="#CI-CD流程（一）Docker-Gitlab-Jenkins持续集成" class="headerlink" title="CI,CD流程（一）Docker+Gitlab+Jenkins持续集成"></a>CI,CD流程（一）Docker+Gitlab+Jenkins持续集成</h1><blockquote>
+<p>记录下使用Docker+Gitlab+Jenkins的安装过程，以及所踩得坑。当然这个还是简单的一个持续集成，后续可能会使用docker服务编排的框架进行项目docker化，通过使用harbox，kubernetes可以构建一个完成的CI，CD流程</p>
+</blockquote>
+<h2 id="一个简单的持续集成的方案"><a href="#一个简单的持续集成的方案" class="headerlink" title="一个简单的持续集成的方案"></a>一个简单的持续集成的方案</h2><p><img src="http://p7sfj9uwv.bkt.clouddn.com/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%901.png" alt="持续集成方案"></p>
 <p>下面将按照上述的图来一步步搭建环境</p>
 <h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><h3 id="1-docker安装"><a href="#1-docker安装" class="headerlink" title="1.docker安装"></a>1.docker安装</h3><p>我使用的是mac版本，下载docker-for-mac,鉴于大家的网路环境，我上传到了百度云，mac安装很简单，直接拖到app中即可。</p>
 <h4 id="官网下载地址"><a href="#官网下载地址" class="headerlink" title="官网下载地址"></a>官网下载地址</h4><p> <a href="https://store.docker.com/editions/community/docker-ce-desktop-mac" target="_blank" rel="noopener">https://store.docker.com/editions/community/docker-ce-desktop-mac</a></p>
@@ -491,21 +519,98 @@
 <blockquote>
 <p>访问这些镜像中心，都需要注册登录才可以使用</p>
 </blockquote>
-<h3 id="2-Gitlab安装"><a href="#2-Gitlab安装" class="headerlink" title="2.Gitlab安装"></a>2.Gitlab安装</h3><p>使用docker安装gitlab就很简单了，之前在centos6.5上手动安装过gitlab，感觉超级麻烦，现在只需要简单的几步即可。</p>
-<h4 id="2-1-拉取gitlab镜像"><a href="#2-1-拉取gitlab镜像" class="headerlink" title="2.1 拉取gitlab镜像"></a>2.1 拉取gitlab镜像</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitlab</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-启动gitlab"><a href="#2-2-启动gitlab" class="headerlink" title="2.2 启动gitlab"></a>2.2 启动gitlab</h4><p>最好把下列命令保存为一个shell脚本，先做好初始化工作，在宿主机上建立gitlab数据挂载目录，方便gitlab的版本更换<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir config</span><br><span class="line">mkdir logs</span><br><span class="line">mkdir data</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用docker安装Gitlab"><a href="#使用docker安装Gitlab" class="headerlink" title="使用docker安装Gitlab"></a>使用docker安装Gitlab</h3><p>使用docker安装gitlab就很简单了，之前在centos6.5上手动安装过gitlab，感觉超级麻烦，现在只需要简单的几步即可。</p>
+<h4 id="拉取gitlab镜像"><a href="#拉取gitlab镜像" class="headerlink" title="拉取gitlab镜像"></a>拉取gitlab镜像</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitlab</span><br></pre></td></tr></table></figure>
+<h4 id="启动gitlab"><a href="#启动gitlab" class="headerlink" title="启动gitlab"></a>启动gitlab</h4><p>最好把下列命令保存为一个shell脚本，先做好初始化工作，在宿主机上建立gitlab数据挂载目录，方便gitlab的版本更换<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir config</span><br><span class="line">mkdir logs</span><br><span class="line">mkdir data</span><br></pre></td></tr></table></figure></p>
 <p>启动gitlab<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker stop gitlab</span><br><span class="line">docker run --detach \</span><br><span class="line">    --hostname 127.0.0.1 \</span><br><span class="line">    --publish 5551:443 --publish 5555:80 --publish 22:22 \</span><br><span class="line">    --name gitlab \</span><br><span class="line">    --restart always \</span><br><span class="line">    --volume `<span class="built_in">pwd</span>`/config:/etc/gitlab \</span><br><span class="line">    --volume `<span class="built_in">pwd</span>`/logs:/var/<span class="built_in">log</span>/gitlab \</span><br><span class="line">    --volume `<span class="built_in">pwd</span>`/data:/var/opt/gitlab \</span><br><span class="line">    gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure></p>
 <blockquote>
+<p>*–rm 代表容器停止后删除该镜像；使用docker ps -a查不到该容器的启动历史</p>
 <ul>
-<li>–rm 代表容器停止后删除该镜像；使用docker ps -a查不到该容器的启动历史</li>
 <li>–restart always docker会监听容器的状态，如果容器意外停止，docker会一直尝试重启，保证容器一直处在运行状态</li>
 <li>–volume 主要是备份容器数据，假如向切换gitlab版本，只需要拉取特定版本的镜像，指定上述挂载的目录即可</li>
 </ul>
 </blockquote>
-<h3 id="3-Jenkins安装"><a href="#3-Jenkins安装" class="headerlink" title="3.Jenkins安装"></a>3.Jenkins安装</h3><h4 id="3-1-拉取jenkins镜像"><a href="#3-1-拉取jenkins镜像" class="headerlink" title="3.1 拉取jenkins镜像"></a>3.1 拉取jenkins镜像</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull jenkins</span><br></pre></td></tr></table></figure>
-<h4 id="3-2-启动jenkins"><a href="#3-2-启动jenkins" class="headerlink" title="3.2 启动jenkins"></a>3.2 启动jenkins</h4><p>最好把下列命令保存为一个shell脚本,先做好初始化工作，在宿主机上建立jenkins数据挂载目录，方便jenkins升级<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir data</span><br></pre></td></tr></table></figure></p>
-<p>启动jenkins<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop jenkins</span><br><span class="line">docker run -d --rm --name jenkins -p 8080:8080 -p 50000:50000 --net=mynet --net-alias=jenkins -v `<span class="built_in">pwd</span>`/data:/var/jenkins_home jenkins</span><br></pre></td></tr></table></figure></p>
-<h2 id="二、gitlab与jenkins整合"><a href="#二、gitlab与jenkins整合" class="headerlink" title="二、gitlab与jenkins整合"></a>二、gitlab与jenkins整合</h2><h2 id="三、gitlab与jenkins在docker中相互依赖互联解决方"><a href="#三、gitlab与jenkins在docker中相互依赖互联解决方" class="headerlink" title="三、gitlab与jenkins在docker中相互依赖互联解决方"></a>三、gitlab与jenkins在docker中相互依赖互联解决方</h2>
+<h3 id="使用docker安装Jenkins"><a href="#使用docker安装Jenkins" class="headerlink" title="使用docker安装Jenkins"></a>使用docker安装Jenkins</h3><h4 id="拉取jenkins镜像"><a href="#拉取jenkins镜像" class="headerlink" title="拉取jenkins镜像"></a>拉取jenkins镜像</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull jenkins</span><br></pre></td></tr></table></figure>
+<h4 id="启动jenkins"><a href="#启动jenkins" class="headerlink" title="启动jenkins"></a>启动jenkins</h4><p>最好把下列命令保存为一个shell脚本,先做好初始化工作，在宿主机上建立jenkins数据挂载目录，方便jenkins升级<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir data</span><br></pre></td></tr></table></figure></p>
+<p>启动jenkins<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop jenkins</span><br><span class="line">docker run -d --rm --name jenkins -p 8080:8080 -p 50000:50000  -v `<span class="built_in">pwd</span>`/data:/var/jenkins_home jenkins</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、基于docker进行gitlab与jenkins整合"><a href="#二、基于docker进行gitlab与jenkins整合" class="headerlink" title="二、基于docker进行gitlab与jenkins整合"></a>二、基于docker进行gitlab与jenkins整合</h2><blockquote>
+<p>思路是在gitlab中配置一个webhook，只要有人提交代码到gitlab，就远程远程触发jenkins任务</p>
+</blockquote>
+<h3 id="配置jenkins"><a href="#配置jenkins" class="headerlink" title="配置jenkins"></a>配置jenkins</h3><p>首先启动jenkins,配置一个pipeline任务<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/92161476.jpg" alt="新建一个pipeline任务"></p>
+<p>配置这个jenkins任务<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/87743650.jpg" alt="配置jenkis任务"></p>
+<blockquote>
+<ul>
+<li>身份验证令牌 这个随便填</li>
+</ul>
+</blockquote>
+<p>远程触发的jenkins的url是:JENKINS_URL/job/test/build,这个地方得注意，由于我们是在docker中运行的jenkins，怎么拿到这个地址呢。<br>我们讲个最简单的办法，使用命令进入到jenkins容器中，拿到jenkins的IP地址<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it jenkins bash</span><br></pre></td></tr></table></figure></p>
+<p>执行ipconfig命令拿到地址,有可能在容器中没有这个命令,可以使用如下如下命令拿到地址<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/hosts</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/79173714.jpg" alt=""></p>
+<p>如上得到jenkins的地址为172.18.0.2,那么gitlab中的远程地址为:</p>
+<ul>
+<li><a href="http://172.18.0.2:8080/job/test/build?token=123456" target="_blank" rel="noopener">http://172.18.0.2:8080/job/test/build?token=123456</a></li>
+</ul>
+<h3 id="配置gitlab"><a href="#配置gitlab" class="headerlink" title="配置gitlab"></a>配置gitlab</h3><p>登录到gitlab中，随便建一个仓库，找到如下配置项<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/5419922.jpg" alt=""></p>
+<p>配置webhook，触发gitlab远程构建，地址就是上述的<a href="http://172.18.0.2:8080/job/test/build?token=123456" target="_blank" rel="noopener">http://172.18.0.2:8080/job/test/build?token=123456</a><br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/2170254.jpg" alt="gitlab配置持续集成位置"></p>
+<h3 id="gitlab与jenkins互联测试"><a href="#gitlab与jenkins互联测试" class="headerlink" title="gitlab与jenkins互联测试"></a>gitlab与jenkins互联测试</h3><p>配置到此，可以模拟一个push请求，进行测试下配置是否成功<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/8557629.jpg" alt="gitlab配置webhook"></p>
+<p>理想是美好的，现实是残酷的,最终得到的页面是这样<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/38432322.jpg" alt="gitlab webhook push测试结果页面"></p>
+<p>我是这样查排查问题的</p>
+<ol>
+<li>时候用docker exec -it gitlab bash 登录到gitlab中，看gitlab容器能否连接到jenkins，gitlab容器中没有安装ping命令的，需要手动安装，安装之后，ping 172.18.0.2 也是能ping通的，那就排除了网络问题。</li>
+<li><p>jenkins中有安全策略，需要配置安全策略，进行如下配置<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/73494545.jpg" alt="jenkins安全配置入口"><br>允许Allow anonymous read access权限，去除防止跨站点请求伪造配置<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/51018191.jpg" alt=""></p>
+</li>
+<li><p>在gitlab中执行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://172.18.0.2:8080/job/<span class="built_in">test</span>/build?token=123456</span><br></pre></td></tr></table></figure>
+<p>到jenkins中查看确实有任务列表，以为大功告成了，现实依然残酷，在gitlab中始终都是一个<strong>500</strong></p>
+</li>
+<li><p>这怎么办，看gitlab日志,使用如下命令查看日志</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f gitlab</span><br></pre></td></tr></table></figure>
+<p>看大如下：Requests to the local network are not allowed<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/45726665.jpg" alt="gitlab日志"><br>从字面上翻译是访问本地网络是不允许的；借助google大神，gitlab中要进行如下配置：<br><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/49886122.jpg" alt="gitlab允许本地网络配置"><br>至此，开发人员push代码到gitlab，可以自动触发jenkins构建任务了</p>
+</li>
+</ol>
+<h2 id="三、gitlab与jenkins在docker中相互依赖互联解决方案"><a href="#三、gitlab与jenkins在docker中相互依赖互联解决方案" class="headerlink" title="三、gitlab与jenkins在docker中相互依赖互联解决方案"></a>三、gitlab与jenkins在docker中相互依赖互联解决方案</h2><p>上述中gitlab与jenkins互联最大的问题是，只要重启jenkins，地址就会变啊，那麻烦了，不可能在每一jenkins重启都要重新配置gitlab webhook吧。<br>一种方案是使用docker的link方案，但是这种方案有个致命的问题，先看下这种改如何配置。</p>
+<h3 id="使用docker-link配置gitlab与jenkins互联"><a href="#使用docker-link配置gitlab与jenkins互联" class="headerlink" title="使用docker link配置gitlab与jenkins互联"></a>使用docker link配置gitlab与jenkins互联</h3><ol>
+<li><p>首先启动jenkins</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop jenkins</span><br><span class="line">docker run -d --rm --name jenkins --link jenkins -p 8080:8080 -p 50000:50000  -v `<span class="built_in">pwd</span>`/data:/var/jenkins_home jenkins</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>–link jenkins</strong> 给改容器起一个为jenkins的网络别名</p>
+</blockquote>
+</li>
+<li><p>启动gitlab </p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker stop gitlab</span><br><span class="line">docker run --detach \</span><br><span class="line">    --link gitlab</span><br><span class="line">    --hostname 127.0.0.1 \</span><br><span class="line">    --publish 5551:443 --publish 5555:80 --publish 22:22 \</span><br><span class="line">    --name gitlab \</span><br><span class="line">    --restart always \</span><br><span class="line">    --volume `<span class="built_in">pwd</span>`/config:/etc/gitlab \</span><br><span class="line">    --volume `<span class="built_in">pwd</span>`/logs:/var/<span class="built_in">log</span>/gitlab \</span><br><span class="line">    --volume `<span class="built_in">pwd</span>`/data:/var/opt/gitlab \</span><br><span class="line">    gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>–link gitlab</strong> 给改容器起一个为gitlab的网络别名</p>
+</blockquote>
+</li>
+<li><p>在gitlab webhook中配置如下地址<br><a href="http://**jenkins**:8080/job/test/build?token=123456" target="_blank" rel="noopener">http://**jenkins**:8080/job/test/build?token=123456</a></p>
+<blockquote>
+<p>上述配置，有个最大的问题，如果我要在jenkins中配置拉取gitlab代码，那么又该如何指定gitlab的地址呢，使用<a href="http://**gitlab**吗？由于我们首先启动的是jenkins，gitlab还没启动，jenkins是感知不到gitlab的。" target="_blank" rel="noopener">http://**gitlab**吗？由于我们首先启动的是jenkins，gitlab还没启动，jenkins是感知不到gitlab的。</a></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="使用自定义网络配置gitlab与jenkins互联"><a href="#使用自定义网络配置gitlab与jenkins互联" class="headerlink" title="使用自定义网络配置gitlab与jenkins互联"></a>使用自定义网络配置gitlab与jenkins互联</h3><ol>
+<li><p>首先创建自定义网络<br>使用如下命令创建自定义网络,gitlab与jenkins要使用相同的网络</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create mynet</span><br></pre></td></tr></table></figure>
+<p><img src="http://p7sfj9uwv.bkt.clouddn.com/18-4-27/23877683.jpg" alt="docker自定义网络"></p>
+</li>
+<li><p>启动jenkins命令</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop jenkins</span><br><span class="line">docker run -d --rm --name jenkins -p 8080:8080 -p 50000:50000 --net=mynet --net-alias=jenkins -v `<span class="built_in">pwd</span>`/data:/var/jenkins_home jenkins</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>–net=mynet 使用创建的自定义网络mynet<br>   –net-alias=jenkins 给容器起一个为jenkins的网络别名</p>
+</blockquote>
+</li>
+<li><p>启动gitlab</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker stop gitlab</span><br><span class="line">docker run --detach \</span><br><span class="line">--net=mynet \</span><br><span class="line">--net-alias=gitlab \</span><br><span class="line">--hostname my.gitlab.com \</span><br><span class="line">--publish 5551:443 --publish 5555:80 --publish 22:22 \</span><br><span class="line">--name gitlab \</span><br><span class="line">--restart always \</span><br><span class="line">--volume `<span class="built_in">pwd</span>`/config:/etc/gitlab \</span><br><span class="line">--volume `<span class="built_in">pwd</span>`/logs:/var/<span class="built_in">log</span>/gitlab \</span><br><span class="line">--volume `<span class="built_in">pwd</span>`/data:/var/opt/gitlab \</span><br><span class="line">--link jenkins:jenkins \</span><br><span class="line">gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>–net=mynet 使用创建的自定义网络mynet ，和gitlab该项配置要一致<br>   –net-alias=gitlab 给容器起一个为gitlab的网络别名</p>
+</blockquote>
+</li>
+<li><p>在gitlab中引用jenkins的地址<br>只需要使用<a href="http://**jenkins**:8080/job/test/build?token=123456" target="_blank" rel="noopener">http://**jenkins**:8080/job/test/build?token=123456</a></p>
+</li>
+</ol>
+<p>至此，gitlab与jenkins就可以分别没有顺序的启动，而且可以相互引用。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>其实在docker中启动jenkins，本人觉得还是不脱，对于jenkins来说需要依赖许多插件，这些插件有的需要在本机安装相应的命令，这样有需要基于jenkins重新自定义jenkins镜像，这就不方便了；比如项目是用maven构建的，改jenkins镜像并没有安装maven命令，一种办法就是重新构建jenkins，一种就是把宿主机的maven命令挂docker中，如果插件很多，就很麻烦。其实，宿主机上安装jenkins也很简单，就一个war包，启动很简单。建议宿主机上安装jenkins。</p>
+
       
     </div>
     
@@ -663,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个简单的持续集成的方案"><span class="nav-number">1.</span> <span class="nav-text">一个简单的持续集成的方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装"><span class="nav-number">2.</span> <span class="nav-text">一、安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-docker安装"><span class="nav-number">2.1.</span> <span class="nav-text">1.docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网下载地址"><span class="nav-number">2.1.1.</span> <span class="nav-text">官网下载地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#百度云下载地址"><span class="nav-number">2.1.2.</span> <span class="nav-text">百度云下载地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker镜像地址"><span class="nav-number">2.1.3.</span> <span class="nav-text">docker镜像地址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Gitlab安装"><span class="nav-number">2.2.</span> <span class="nav-text">2.Gitlab安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-拉取gitlab镜像"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 拉取gitlab镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-启动gitlab"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 启动gitlab</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Jenkins安装"><span class="nav-number">2.3.</span> <span class="nav-text">3.Jenkins安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-拉取jenkins镜像"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 拉取jenkins镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-启动jenkins"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 启动jenkins</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、gitlab与jenkins整合"><span class="nav-number">3.</span> <span class="nav-text">二、gitlab与jenkins整合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、gitlab与jenkins在docker中相互依赖互联解决方"><span class="nav-number">4.</span> <span class="nav-text">三、gitlab与jenkins在docker中相互依赖互联解决方</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CI-CD流程（一）Docker-Gitlab-Jenkins持续集成"><span class="nav-number">1.</span> <span class="nav-text">CI,CD流程（一）Docker+Gitlab+Jenkins持续集成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个简单的持续集成的方案"><span class="nav-number">1.1.</span> <span class="nav-text">一个简单的持续集成的方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装"><span class="nav-number">1.2.</span> <span class="nav-text">一、安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-docker安装"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网下载地址"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">官网下载地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#百度云下载地址"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">百度云下载地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docker镜像地址"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">docker镜像地址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用docker安装Gitlab"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用docker安装Gitlab</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拉取gitlab镜像"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">拉取gitlab镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动gitlab"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">启动gitlab</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用docker安装Jenkins"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用docker安装Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拉取jenkins镜像"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">拉取jenkins镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动jenkins"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">启动jenkins</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、基于docker进行gitlab与jenkins整合"><span class="nav-number">1.3.</span> <span class="nav-text">二、基于docker进行gitlab与jenkins整合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置jenkins"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置gitlab"><span class="nav-number">1.3.2.</span> <span class="nav-text">配置gitlab</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitlab与jenkins互联测试"><span class="nav-number">1.3.3.</span> <span class="nav-text">gitlab与jenkins互联测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、gitlab与jenkins在docker中相互依赖互联解决方案"><span class="nav-number">1.4.</span> <span class="nav-text">三、gitlab与jenkins在docker中相互依赖互联解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用docker-link配置gitlab与jenkins互联"><span class="nav-number">1.4.1.</span> <span class="nav-text">使用docker link配置gitlab与jenkins互联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用自定义网络配置gitlab与jenkins互联"><span class="nav-number">1.4.2.</span> <span class="nav-text">使用自定义网络配置gitlab与jenkins互联</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.5.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></div>
             
 
           </div>
